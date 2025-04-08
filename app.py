@@ -1,20 +1,19 @@
-
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from flask_session import Session
 import os
 
 app = Flask(__name__)
-app.secret_key = "secret"
+app.secret_key = "alsalam_secret"
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
-@app.route('/')
+@app.route("/")
 def index():
     return render_template("index.html")
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route("/login", methods=["GET", "POST"])
 def login():
-    if request.method == 'POST':
+    if request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
         if username == "admin" and password == "admin123":
@@ -25,13 +24,13 @@ def login():
             return redirect(url_for("login"))
     return render_template("login.html")
 
-@app.route('/dashboard')
+@app.route("/dashboard")
 def dashboard():
     if "username" not in session:
         return redirect(url_for("login"))
     return render_template("dashboard.html")
 
-@app.route('/logout')
+@app.route("/logout")
 def logout():
     session.clear()
     return redirect(url_for("index"))
