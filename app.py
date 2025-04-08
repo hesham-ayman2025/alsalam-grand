@@ -1,6 +1,7 @@
 
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from flask_session import Session
+import os
 
 app = Flask(__name__)
 app.secret_key = "secret"
@@ -35,5 +36,6 @@ def logout():
     session.clear()
     return redirect(url_for("index"))
 
-if __name__ == '__main__':
-    app.run()
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
