@@ -1,0 +1,16 @@
+apply plugin: 'com.android.application'
+android {
+    namespace 'com.alsalamgrand.rom'
+    compileSdk 35
+    defaultConfig {
+        applicationId 'com.alsalamgrand.rom'
+        minSdk 23
+        targetSdk 28
+        versionCode 6
+        versionName '6.0-rom-home-stage-e'
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
